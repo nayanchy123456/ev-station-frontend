@@ -1,0 +1,497 @@
+/* Modern Register CSS with Glassmorphism and Smooth Animations */
+
+/* Base body styling with gradient background */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Inter', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-x: hidden;
+  padding: 20px 0;
+}
+
+/* Animated background elements */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 118, 117, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 219, 226, 0.2) 0%, transparent 50%);
+  animation: backgroundFloat 20s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes backgroundFloat {
+  0% { transform: translate(0px, 0px) rotate(0deg); }
+  100% { transform: translate(-10px, -10px) rotate(1deg); }
+}
+
+/* Main register card container */
+.register-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 24px;
+  padding: 40px;
+  width: 100%;
+  max-width: 480px;
+  box-shadow: 
+    0 25px 45px rgba(0, 0, 0, 0.1),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  position: relative;
+  animation: slideUp 0.6s ease-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin: 20px auto;
+}
+
+.register-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 35px 60px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Register title */
+.register-card h2 {
+  color: #ffffff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  letter-spacing: -0.5px;
+}
+
+/* Form styling with grid layout for better organization */
+.register-card form {
+  display: grid;
+  gap: 20px;
+}
+
+/* Two-column layout for name fields on larger screens */
+@media (min-width: 576px) {
+  .register-card form {
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "firstName lastName"
+      "email email"
+      "phone phone"
+      "password password"
+      "role role"
+      "button button";
+  }
+  
+  .register-input-container:nth-child(1) { grid-area: firstName; }
+  .register-input-container:nth-child(2) { grid-area: lastName; }
+  .register-input-container:nth-child(3) { grid-area: email; }
+  .register-input-container:nth-child(4) { grid-area: phone; }
+  .register-input-container:nth-child(5) { grid-area: password; }
+  .register-input-container:nth-child(6) { grid-area: role; }
+  .register-btn { grid-area: button; }
+}
+
+/* Input container with floating labels */
+.register-input-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.register-input-container input,
+.register-input-container select {
+  width: 100%;
+  padding: 18px 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 500;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
+  box-sizing: border-box;
+  appearance: none;
+}
+
+.register-input-container input::placeholder {
+  color: transparent;
+}
+
+.register-input-container input:focus,
+.register-input-container select:focus {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Custom select dropdown styling */
+.register-input-container select {
+  cursor: pointer;
+  background-image: 
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 0.7) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.7) 50%, transparent 50%);
+  background-position: 
+    calc(100% - 20px) calc(1em + 2px),
+    calc(100% - 15px) calc(1em + 2px);
+  background-size: 5px 5px, 5px 5px;
+  background-repeat: no-repeat;
+  padding-right: 45px;
+}
+
+.register-input-container select:focus {
+  background-image: 
+    linear-gradient(45deg, transparent 50%, rgba(255, 255, 255, 1) 50%),
+    linear-gradient(135deg, rgba(255, 255, 255, 1) 50%, transparent 50%);
+}
+
+.register-input-container select option {
+  background: #2a2a3e;
+  color: #ffffff;
+  padding: 10px;
+  border: none;
+}
+
+/* Floating label animation */
+.register-input-container label {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 16px;
+  font-weight: 500;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1;
+}
+
+.register-input-container input:focus + label,
+.register-input-container input:not(:placeholder-shown) + label,
+.register-input-container select:focus + label,
+.register-input-container select:not([value=""]) + label {
+  top: -8px;
+  left: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 4px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Register button */
+.register-btn {
+  width: 100%;
+  padding: 18px;
+  border: none;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+  position: relative;
+  overflow: hidden;
+  margin-top: 12px;
+  grid-column: 1 / -1;
+}
+
+.register-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.register-btn:hover::before {
+  left: 100%;
+}
+
+.register-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(102, 126, 234, 0.4);
+}
+
+.register-btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(102, 126, 234, 0.3);
+}
+
+/* Error message styling */
+.register-error {
+  background: rgba(244, 67, 54, 0.1);
+  border: 1px solid rgba(244, 67, 54, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #ff6b6b;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  animation: shake 0.5s ease-in-out;
+  grid-column: 1 / -1;
+}
+
+/* Success message styling */
+.register-success {
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 12px;
+  padding: 12px 16px;
+  color: #4caf50;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  animation: pulse 0.5s ease-in-out;
+  grid-column: 1 / -1;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.02); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Login redirect link */
+.register-redirect {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 16px;
+  font-weight: 500;
+  margin-top: 24px;
+  grid-column: 1 / -1;
+}
+
+.register-link {
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.register-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+  transition: width 0.3s ease;
+}
+
+.register-link:hover {
+  color: #667eea;
+  text-decoration-color: #667eea;
+}
+
+.register-link:hover::after {
+  width: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding: 15px;
+    background-attachment: scroll;
+  }
+  
+  .register-card {
+    padding: 32px 24px;
+    max-width: 100%;
+    margin: 10px auto;
+    border-radius: 20px;
+  }
+  
+  .register-card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 24px;
+  }
+  
+  .register-input-container input,
+  .register-input-container select {
+    padding: 16px 18px;
+    font-size: 16px; /* Prevents zoom on iOS */
+  }
+  
+  .register-input-container select {
+    padding-right: 40px;
+  }
+  
+  .register-btn {
+    padding: 16px;
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 575px) {
+  .register-card form {
+    grid-template-columns: 1fr;
+    grid-template-areas: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .register-card {
+    padding: 28px 20px;
+    border-radius: 16px;
+  }
+  
+  .register-card h2 {
+    font-size: 1.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .register-input-container input,
+  .register-input-container select {
+    padding: 14px 16px;
+  }
+  
+  .register-input-container select {
+    padding-right: 35px;
+    background-position: 
+      calc(100% - 16px) calc(1em + 2px),
+      calc(100% - 11px) calc(1em + 2px);
+  }
+  
+  .register-btn {
+    padding: 14px;
+    font-size: 16px;
+  }
+  
+  .register-redirect {
+    font-size: 15px;
+  }
+}
+
+/* Form validation states */
+.register-input-container input:valid {
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+.register-input-container input:invalid:not(:placeholder-shown) {
+  border-color: rgba(244, 67, 54, 0.4);
+}
+
+/* Loading state for button */
+.register-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.register-btn:disabled:hover {
+  transform: none;
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .register-card {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .register-input-container input,
+  .register-input-container select {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .register-input-container input:focus,
+  .register-input-container select:focus {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+  
+  .register-input-container select option {
+    background: #1a1a1a;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .register-card {
+    border: 2px solid rgba(255, 255, 255, 0.5);
+  }
+  
+  .register-input-container input,
+  .register-input-container select {
+    border: 2px solid rgba(255, 255, 255, 0.4);
+  }
+  
+  .register-btn {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  body::before {
+    animation: none;
+  }
+}
+
+/* Focus management for better keyboard navigation */
+.register-input-container:focus-within {
+  outline: 2px solid rgba(255, 255, 255, 0.5);
+  outline-offset: 2px;
+  border-radius: 18px;
+}
+
+/* Improved select arrow positioning */
+@media (max-width: 320px) {
+  .register-input-container select {
+    background-position: 
+      calc(100% - 12px) calc(1em + 2px),
+      calc(100% - 7px) calc(1em + 2px);
+    padding-right: 30px;
+  }
+}
