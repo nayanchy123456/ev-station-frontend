@@ -1,0 +1,39 @@
+/* Container holding sidebar + main content */
+.dashboard-container {
+  display: flex;
+  height: 100vh;       /* full viewport height */
+  width: 100vw;        /* full viewport width */
+  overflow: hidden;
+}
+
+/* Main content (Navbar + cards) */
+.main-content {
+  flex: 1;             /* take remaining width */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;   /* ensure full height */
+  background-color: #f9f9f9;
+  overflow: auto;      /* scroll if content exceeds viewport */
+}
+
+/* Cards grid */
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 1.5rem;
+  flex: 1;
+}
+
+/* Individual card */
+.card {
+  background-color: #fff;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}

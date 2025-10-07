@@ -1,0 +1,33 @@
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+.user-dashboard {
+  flex: 1;
+  padding: 2rem;
+  background-color: #fff;
+  border-left: 1px solid #e5e7eb;
+  overflow-y: auto;
+}
+
+.user-dashboard h2 {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #222;
+}
+
+button {
+  margin-left: 0.5rem;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 6px;
+  background-color: #10b981;
+  color: white;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #059669;
+}
