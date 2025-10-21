@@ -1,0 +1,50 @@
+.navbar {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1.5rem;
+  background-color: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  flex-shrink: 0;
+  border-radius: 15px 0 0 15px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  background-color: #f1f3f5;
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  width: 300px;
+}
+
+.search-bar input {
+  border: none;
+  outline: none;
+  background: transparent;
+  margin-left: 0.5rem;
+  width: 100%;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.navbar-right .profile {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.navbar-right .icon {
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+.username {
+  font-weight: 500;
+  color: #111827;
+}
