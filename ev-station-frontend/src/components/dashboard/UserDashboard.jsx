@@ -1,3 +1,4 @@
+// src/components/dashboard/UserDashboard.jsx
 import React from "react";
 import Sidebar from "../sidebar/Sidebar";
 import Navbar from "../navbar/Navbar";
@@ -9,12 +10,7 @@ const UserDashboard = () => {
       <Sidebar userType="user" />
       <div className="main-content">
         <Navbar username="Nayan" />
-        <div className="dashboard-cards">
-          <div className="card">Card 1</div>
-          <div className="card">Card 2</div>
-          <div className="card">Card 3</div>
-          <div className="card">Card 4</div>
-        </div>
+      
       </div>
     </div>
   );
